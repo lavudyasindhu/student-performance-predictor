@@ -1,0 +1,13 @@
+
+stages:
+  train:
+    cmd: python train_model.py
+    deps:
+      - train_model.py
+      - student_grades.csv
+    outs:
+      - model/student_grade_model.keras
+      - model/scaler.pkl
+    metrics:
+      - metrics.json:
+          cache: false
