@@ -3,7 +3,7 @@ import json
 import joblib
 import numpy as np
 import pandas as pd
-
+import mlflow
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, classification_report
@@ -15,7 +15,9 @@ from tensorflow.keras.utils import set_random_seed
 
 # 1. Reproducibility
 set_random_seed(42)
-
+# MLflow experiment tracking
+mlflow.set_tracking_uri("sqlite:///mlflow.db")
+mlflow.set_experiment("Student Grade Prediction")
 # 2. Load dataset
 df = pd.read_csv("student_grades.csv")
 
@@ -94,7 +96,11 @@ predictions = model.predict(X_test, verbose=0)
 predicted_classes = np.argmax(predictions, axis=1)
 
 accuracy = accuracy_score(y_test, predicted_classes)
-
+# Log evaluation metrics to MLflow
+with mlflow.start_run():
+    mlflow.log_metric("test_accuracy", float(accuracy))
+    mlflow.log_param("test_samples", len(y_test))
+    mlflow.log_param("random_seed", 42)
 print(f"\nTest accuracy: {accuracy:.4f}")
 print("\nClassification report:")
 print(classification_report(

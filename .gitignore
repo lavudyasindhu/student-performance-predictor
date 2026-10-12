@@ -1,4 +1,18 @@
+
+# Dataset managed by DVC
 /student_grades.csv
 
+# Trained model files
 /model/
+
+# Python cache
 __pycache__/
+*.py[cod]
+
+# MLflow local tracking
+mlflow.db
+mlruns/
+
+# Virtual environments
+venv/
+.venv/
