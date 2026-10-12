@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5fa;
+            margin: 0;
+            padding: 30px 15px;
+        }
+        .container {
+            max-width: 450px;
+            margin: 30px auto;
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px #00000012;
+        }
+        h1 {
+            text-align: center;
+            color: #203864;
+        }
+        p {
+            color: #555;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 11px;
+            margin-top: 7px;
+            border: 1px solid #ccd3df;
+            border-radius: 6px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 24px;
+            background: #2457c5;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            text-align: center;
+            background: #e8f4ff;
+            border-radius: 6px;
+        }
+        .error {
+            color: #b42318;
+            text-align: center;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Grade Prediction</h1>
+        <p>Enter student details to predict the grade.</p>
+
+        <form method="POST" action="/">
+            <label for="hours">Study Hours</label>
+            <input id="hours" name="hours" type="number"
+                   min="0" step="any" required>
+
+            <label for="attendance">Attendance (%)</label>
+            <input id="attendance" name="attendance" type="number"
+                   min="0" max="100" step="any" required>
+
+            <label for="assignments">Assignments Completed</label>
+            <input id="assignments" name="assignments" type="number"
+                   min="0" step="any" required>
+
+            <button type="submit">Predict Grade</button>
+        </form>
+
+        {% if predicted_grade %}
+            <div class="result">
+                <strong>Predicted Grade: {{ predicted_grade }}</strong>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
