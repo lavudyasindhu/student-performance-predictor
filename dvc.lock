@@ -1,0 +1,26 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python train_model.py
+    deps:
+    - path: student_grades.csv
+      hash: md5
+      md5: 1a75fdeccbf713b833f0ccd65a34f318
+      size: 444
+    - path: train_model.py
+      hash: md5
+      md5: 0562b14366d509c2eb8d0c801fb9c65e
+      size: 3060
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: ad87ec62bb4234ccac3ab5aa13939413
+      size: 53
+    - path: model/scaler.pkl
+      hash: md5
+      md5: e85ca4756a63c1a3ffe5302d84a95ef1
+      size: 959
+    - path: model/student_grade_model.keras
+      hash: md5
+      md5: 6e826f008d4fc67e6fb77263f0f8654c
+      size: 28256
