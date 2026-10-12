@@ -148,14 +148,12 @@ for actual, predicted in zip(y_test, predicted_classes):
         f"Actual: {grade_names[actual]}, "
         f"Predicted: {grade_names[predicted]}"
     )
-
-
 print("\nClassification Report:")
 print(classification_report(
     y_test,
     predicted_classes,
-    labels=np.arange(len(encoder.classes_)),
-    target_names=encoder.classes_,
+    labels=[0, 1, 2, 3],
+    target_names=grade_names,
     zero_division=0
 ))
 
@@ -179,10 +177,10 @@ while True:
         prediction = model.predict(new_student_scaled, verbose=0)
         grade_index = np.argmax(prediction, axis=1)[0]
 
-        print("\nPredicted Grade:", encoder.inverse_transform([grade_index])[0])
+        print("\nPredicted Grade:", grade_names[grade_index])
         print("Prediction probabilities:")
-        for grade, probability in zip(encoder.classes_, prediction[0]):
-            print(f"{grade}: {probability * 100:.2f}%")
+        for grade, probability in zip(grade_names, prediction[0]):
+          print(f"{grade}: {probability * 100:.2f}%")
 
         break
 
