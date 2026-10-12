@@ -2,8 +2,7 @@
 # Dataset managed by DVC
 /student_grades.csv
 
-# Trained model files
-/model/
+
 
 # Python cache
 __pycache__/
