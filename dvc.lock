@@ -9,8 +9,8 @@ stages:
       size: 444
     - path: train_model.py
       hash: md5
-      md5: 0562b14366d509c2eb8d0c801fb9c65e
-      size: 3060
+      md5: 9b03ee400d19bfa460ee01eebf1bc47a
+      size: 3409
     outs:
     - path: metrics.json
       hash: md5
@@ -22,5 +22,5 @@ stages:
       size: 959
     - path: model/student_grade_model.keras
       hash: md5
-      md5: 6e826f008d4fc67e6fb77263f0f8654c
+      md5: 4052ca718bdc3d84c81bc086a70772ac
       size: 28256
